@@ -33,6 +33,10 @@ class LoginController extends Controller
         return view('authAdmin.login');
     }
 
+    public function showLoginForm2(){
+        return view('authAdmin.logindaftar');
+    }
+
     public function login(Request $request){
         $this->validate($request,[
             'username'=>'required',
@@ -46,7 +50,7 @@ class LoginController extends Controller
         ];
 
         if (Auth::guard('admin')->attempt($credential,$request->member)){
-            return redirect()->intended(route('admin.home'));
+            return redirect()->intended('/dashboard');
         }
 
         return redirect()->back()->withInput($request->only('email','remember'));
