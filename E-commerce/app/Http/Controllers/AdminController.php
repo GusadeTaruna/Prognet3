@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Images;
+use App\Discount;
 use DB;
 
 class AdminController extends Controller
@@ -83,30 +85,33 @@ class AdminController extends Controller
     public function store(Request $request){
 
 
-        $product = new Product();
-
-        $product->product_name = $request->product_name;
-        $product->price = $request->price;
-        $product->description = $request->description;
-        $product->stock = $request->stock;
-        $product->weight = $request->weight;
-
-
-        // if ($request->hasFile('profile_image')) {
-        //     $profile_image = $request->file('profile_image');
-        //     $name = str_slug($request->title).'.'.$profile_image->getClientOriginalName();
-        //     $destinationPath = public_path('/uploads/User');
-        //     $imagePath = $destinationPath. "/".  $name;
-        //     $profile_image->move($destinationPath, $name);
-        //     $product->profile_image = $name;
-        // }else{
-        //     $images = scandir(public_path('/uploads/User'));
-        //     $name = str_slug($request->title).'.'.'default.png';
-        //     $product->profile_image = $name;
-        // }
-
-
-        $product->save();
-        return redirect()->back()->with('success','Successfully input');
+        if ($request->hasFile('images')) {
+            $allowedfileExtension=['jpeg','jpg','png','bmp'];
+            $files = $request->file('images');
+            foreach ($files as $file) {
+                $image_name = $file->getClientOriginalName();
+                $extension = $file->getClientOriginalExtension();
+                $check=in_array($extension,$allowedfileExtension);
+            }
+            if ($check) {
+                $product = Product::create($request->all());
+                foreach ($request->images as $image) {
+                    $image_name = $image->store('images');
+                    Images::create([
+                        'product_id'=>$product->id,
+                        'image_name'=>$image_name
+                    ]);
+                }
+                if ($request->get('mycheckbox')) {
+                    Discount::create([
+                        'id_product'=>$product->id,
+                        'percentage'=>$request->input('percentage'),
+                        'start'=>$request->input('start'),
+                        'end'=>$request->input('end')
+                    ]);
+                }
+            }
+        }
+        return redirect('list-product')->with('success','Successfully input');
     }
 }

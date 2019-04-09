@@ -13,8 +13,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
-
+    
     public function trackOrder()
     {
         return view('/user/track');

@@ -4,12 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Images extends Model
+class Discount extends Model
 {
-    //
-    protected $table = 'product_images';
+    protected $table = 'discounts';
     protected $fillable = [
-        'product_id','image_name',
+        'id_product','percentage','start','end',
     ];
     protected $guard = 'admin';
     public $timestamps = 'true';
