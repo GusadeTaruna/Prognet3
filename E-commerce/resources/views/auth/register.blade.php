@@ -39,6 +39,10 @@
                             </div>
                         </div>
 
+                        <input type="text" name="profile_image" value=NULL hidden="">
+                        <input type="text" name="status" value=NULL hidden="">
+
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

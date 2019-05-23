@@ -1,84 +1,59 @@
-@extends('layout.authlayout')
-
+@extends('frontEnd.layouts.master')
+@section('title','Login Register Page')
+@section('slider')
+@endsection
 @section('content')
-<div class="breadcrumb">
     <div class="container">
-        <div class="breadcrumb-inner">
-        </div><!-- /.breadcrumb-inner -->
-    </div><!-- /.container -->
-</div><!-- /.breadcrumb -->
+        @if(Session::has('message'))
+            <div class="alert alert-success text-center" role="alert">
+                {{Session::get('message')}}
+            </div>
+        @endif
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form"><!--login form-->
+                    <h2>Login to your account</h2>
+                    <form action="{{ route('login') }}" method="post" class="form-horizontal">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        <input type="email" placeholder="Email" name="email"/>
+                        <input type="password" placeholder="Password" name="password"/>
+                        <span>
+                            <input type="checkbox" class="checkbox">
+                           <p style="color: black;"> Keep me signed in </p>
+                        </span>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form"><!--sign up form-->
+                    <h2>New User Signup!</h2>
+                    <form action="{{ route('register') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
 
-<div class="body-content outer-top-bd">
-    <div class="container">
-        <div class="sign-in-page inner-bottom-sm">
-            <div class="row">
-                <!-- Sign-in -->            
-<div class="col-md-6 col-sm-6 sign-in">
-    <h4 class="">sign in</h4>
-    <p class="">Hello, Please Sign In With your account.</p>
-    <form class="register-form outer-top-xs" role="form" method="POST" action="{{ route('login') }}">
-        @csrf
+                        <input type="text" placeholder="Name" name="name" value="{{old('name')}}"/>
+                        <span class="text-danger">{{$errors->first('name')}}</span>
 
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail1">Email Address <span>*</span></label>
-            <input type="email" class="form-control unicase-form-control text-input" id="exampleInputEmail1" name="email" required>
-        </div>
-        <div class="form-group">
-            <label class="info-title" for="exampleInputPassword1">Password <span>*</span></label>
-            <input type="password" class="form-control unicase-form-control text-input" id="exampleInputPassword1" name="password" required>
-        </div>
-        <div class="radio outer-xs">
-            <label>
-                <input type="checkbox" name="remember" id="remember"> Remember me!
-            </label>
-            @if (Route::has('password.request'))
-            <a href="{{ route('password.request') }}" class="forgot-password pull-right">Forgot your Password?</a>
-            @endif
-        </div>
-        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Login</button>
-    </form>                 
-</div>
-<!-- Sign-in -->
+                        <input type="email" placeholder="Email Address" name="email" value="{{old('email')}}"/>
+                        <span class="text-danger">{{$errors->first('email')}}</span>
 
-<!-- create a new account -->
-<div class="col-md-6 col-sm-6 create-new-account">
-    <h4 class="checkout-subtitle">create a new account</h4>
-    <p class="text title-tag-line">Create your own account to buy something.</p>
+                        <input type="hidden" name="profile_image" value=NULL>
+                        <input type="hidden" name="status" value=NULL>
 
-    <form class="register-form outer-top-xs" role="form" method="POST" action="{{ route('signup') }}" enctype="multipart/form-data">
-        @csrf
 
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail2">Name <span>*</span></label>
-            <input id="name" type="text" class="form-control unicase-form-control text-input" name="name" required>
+                        <input type="password" placeholder="Password" name="password" value="{{old('password')}}"/>
+                        <span class="text-danger">{{$errors->first('password')}}</span>
+
+                        <input type="password" placeholder="Confirm Password" name="password_confirmation" value="{{old('password_confirmation')}}"/>
+                        <span class="text-danger">{{$errors->first('password_confirmation')}}</span>
+
+                        <button type="submit" class="btn btn-primary">Signup</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
         </div>
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail2">Email Address <span>*</span></label>
-            <input type="email" name="email" class="form-control unicase-form-control text-input" id="exampleInputEmail2" required >
-        </div>
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail2">Password <span>*</span></label>
-            <input type="password" name="password" class="form-control unicase-form-control text-input" id="password" required >
-        </div>
-        <div class="form-group">
-            <label class="info-title" for="exampleInputEmail2">Confirm Password <span>*</span></label>
-            <input type="password" name="password_confirmation" class="form-control unicase-form-control text-input" id="password-confirm" required >
-        </div>
-        <div class="form-group">
-            <label class="info-title">Upload Image<span>*</span></label>
-            <input type="file" name="profile_image" class="form-control unicase-form-control" >
-        </div>
-        <button type="submit" class="btn-upper btn btn-primary checkout-page-button">Sign Up</button>
-    </form>
-</div>  
-<!-- create a new account -->           </div><!-- /.row -->
-        </div><!-- /.sigin-in-->
-        <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-    
-</div><!-- /.logo-slider -->
-<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->    </div><!-- /.container -->
-</div><!-- /.body-content -->
-<!-- ============================================================= FOOTER ============================================================= -->
-</div>
-</div>
+    </div>
+    <div style="margin-bottom: 20px;"></div>
 @endsection

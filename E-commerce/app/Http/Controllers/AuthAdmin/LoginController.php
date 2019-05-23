@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\AuthAdmin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,7 @@ class LoginController extends Controller
     |
     */
 
+
     /**
      * Create a new controller instance.
      *
@@ -30,36 +32,43 @@ class LoginController extends Controller
     }
 
     public function showLoginForm(){
-        return view('authAdmin.login');
+        return view("authAdmin.login");
     }
 
-    public function showLoginForm2(){
-        return view('authAdmin.logindaftar');
+    public function username(){
+        return 'username';
     }
 
-    public function login(Request $request){
+    public function logout(){
+        Auth::guard('admin')->logout();
+        return redirect('admin/');
+    }
+
+    /**
+     * Handle a login request to the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Http\JsonResponse
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+
+    public function login(Request $request)
+    {
         $this->validate($request,[
-            'username'=>'required',
-            'password'=>'required|min:6'
+            'username' => 'required|string',
+            'password' => 'required|min:8',
         ]);
 
-        $credential = [
-            'username'=> $request->username,
-            'password'=> $request->password
-
+        $credential =[
+            'username' => $request->username,
+            'password' => $request->password,
         ];
 
-        if (Auth::guard('admin')->attempt($credential,$request->member)){
-            return redirect()->intended('/dashboard');
+        if(Auth::guard('admin')->attempt($credential,$request->member)){
+            return redirect()->intended(route("admin.home"));
         }
-
-        return redirect()->back()->withInput($request->only('email','remember'));
+        return redirect()->back()->withInput($request->only('username','remember'));
+        
     }
-
-    public function logout()
-    {
-        Auth::guard('admin')->logout();
-        return redirect('/');
-    }
-
 }

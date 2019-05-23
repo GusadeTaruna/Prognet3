@@ -1,830 +1,99 @@
-@extends('layout.landinglayout')
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('content')
+        <title>Laravel</title>
 
-<!-- ============================================== CONTENT ============================================== -->
-            <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
-<!-- ========================================== SECTION – HERO ========================================= -->        
-                <div id="hero">
-                    <div id="owl-main" class="owl-carousel owl-inner-nav owl-ui-sm">
-                        <div class="item" style="background-image: url({{url('User/images/sliders/01.jpg')}});">
-                            <div class="container-fluid">
-                                <div class="caption bg-color vertical-center text-left">
-                                    <div class="big-text fadeInDown-1">
-                                        The new <span class="highlight">imac</span> for you
-                                    </div>
-                                    <div class="excerpt fadeInDown-2 hidden-xs">
-                                        <span>21.5-Inch Now Starting At $1099 </span>
-                                        <span>27-Inch Starting At $1799</span>
-                                    </div>
-                                    <div class="button-holder fadeInDown-3">
-                                        <a href="index6c11.html?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a>
-                                    </div>
-                                </div><!-- /.caption -->
-                            </div><!-- /.container-fluid -->
-                        </div><!-- /.item -->
-                        <div class="item" style="background-image: url({{ url('User/images/sliders/01.jpg')}});">
-                            <div class="container-fluid">
-                                <div class="caption bg-color vertical-center text-left">
-                                    <div class="big-text fadeInDown-1">
-                                        The new <span class="highlight">imac</span> for you
-                                    </div>
-                                    <div class="excerpt fadeInDown-2 hidden-xs">
-                                        <span>21.5-Inch Now Starting At $1099 </span>
-                                        <span>27-Inch Starting At $1799</span>
-                                    </div>
-                                    <div class="button-holder fadeInDown-3">
-                                        <a href="index6c11.html?page=single-product" class="btn-lg btn btn-uppercase btn-primary shop-now-button">Shop Now</a>
-                                    </div>
-                                </div><!-- /.caption -->
-                            </div><!-- /.container-fluid -->
-                        </div><!-- /.item -->
-                    </div><!-- /.owl-carousel -->
-                </div><!-- /.hero -->
-<!-- ========================================= SECTION – HERO : END ========================================= -->   
-            </div>
+        <!-- Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
-            <!-- ============================================== NEW PRODUCT ============================================== -->
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="sidebar-widget wow fadeInUp outer-bottom-vs">
-                    <h3 class="section-title">NEW PRODUCT</h3>
-                    <div class="sidebar-widget-body outer-top-xs">
-                        <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s1.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s1.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro new">
-                                                            <span>new</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Asus Zenphone 6</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s1.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s1.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Asus Zenphone 6</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Apple Iphone 5s</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro sale">
-                                                            <span>sale</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Apple Iphone 5s</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s3.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s3.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro hot">
-                                                            <span>hot</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Canon EOS 60D</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s3.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s3.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Canon EOS 60D</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span> 
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro hot">
-                                                            <span>hot</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                            <div class="col col-xs-7">
-                                                <div class="product-info">
-                                                    <h3 class="name"><a href="#">Sony Ericson Vaga</a></h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="product-price"> 
-                                                        <span class="price">
-                                                            $650.99             
-                                                        </span>
-                                                    </div><!-- /.product-price -->
-                                                    <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                </div>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.product-micro-row -->
-                                    </div><!-- /.product-micro -->
-                                </div>
-                                <div class="product">
-                                    <div class="product-micro">
-                                        <div class="row product-micro-row">
-                                            <div class="col col-xs-5">
-                                                <div class="product-image">
-                                                    <div class="image">
-                                                        <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                            <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                            <div class="zoom-overlay"></div>
-                                                        </a>                    
-                                                    </div><!-- /.image -->
-                                                </div><!-- /.product-image -->
-                                            </div><!-- /.col -->
-                                            <div class="col col-xs-7">
-                                                <div class="product-info">
-                                                    <h3 class="name"><a href="#">Sony Ericson Vaga</a></h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="product-price"> 
-                                                        <span class="price">
-                                                            $650.99             
-                                                        </span>
-                                                    </div><!-- /.product-price -->
-                                                    <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                </div>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.product-micro-row -->
-                                    </div><!-- /.product-micro -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- /.sidebar-widget-body -->
-            </div><!-- /.sidebar-widget -->
+        <!-- Styles -->
+        <style>
+            html, body {
+                background-color: #fff;
+                color: #636b6f;
+                font-family: 'Nunito', sans-serif;
+                font-weight: 200;
+                height: 100vh;
+                margin: 0;
+            }
 
-<!-- ============================================== New Products : END ============================================== -->   
-<!-- ============================================== FEATURED PRODUCTS : END ============================================== -->
-        </div><!-- /.homebanner-holder -->
-        <!-- ============================================== SPECIAL OFFER ============================================== -->
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="sidebar-widget wow fadeInUp outer-bottom-vs">
-                    <h3 class="section-title">SPECIAL OFFER</h3>
-                    <div class="sidebar-widget-body outer-top-xs">
-                        <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s1.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s1.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro new">
-                                                            <span>new</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Asus Zenphone 6</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s1.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s1.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Asus Zenphone 6</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Apple Iphone 5s</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro sale">
-                                                            <span>sale</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Apple Iphone 5s</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s3.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s3.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro hot">
-                                                            <span>hot</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Canon EOS 60D</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s3.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s3.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Canon EOS 60D</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span> 
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                        <div class="tag tag-micro hot">
-                                                            <span>hot</span>
-                                                        </div>
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                            <div class="col col-xs-7">
-                                                <div class="product-info">
-                                                    <h3 class="name"><a href="#">Sony Ericson Vaga</a></h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="product-price"> 
-                                                        <span class="price">
-                                                            $650.99             
-                                                        </span>
-                                                    </div><!-- /.product-price -->
-                                                    <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                </div>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.product-micro-row -->
-                                    </div><!-- /.product-micro -->
-                                </div>
-                                <div class="product">
-                                    <div class="product-micro">
-                                        <div class="row product-micro-row">
-                                            <div class="col col-xs-5">
-                                                <div class="product-image">
-                                                    <div class="image">
-                                                        <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                            <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                            <div class="zoom-overlay"></div>
-                                                        </a>                    
-                                                    </div><!-- /.image -->
-                                                </div><!-- /.product-image -->
-                                            </div><!-- /.col -->
-                                            <div class="col col-xs-7">
-                                                <div class="product-info">
-                                                    <h3 class="name"><a href="#">Sony Ericson Vaga</a></h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="product-price"> 
-                                                        <span class="price">
-                                                            $650.99             
-                                                        </span>
-                                                    </div><!-- /.product-price -->
-                                                    <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                </div>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.product-micro-row -->
-                                    </div><!-- /.product-micro -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            .full-height {
+                height: 100vh;
+            }
+
+            .flex-center {
+                align-items: center;
+                display: flex;
+                justify-content: center;
+            }
+
+            .position-ref {
+                position: relative;
+            }
+
+            .top-right {
+                position: absolute;
+                right: 10px;
+                top: 18px;
+            }
+
+            .content {
+                text-align: center;
+            }
+
+            .title {
+                font-size: 84px;
+            }
+
+            .links > a {
+                color: #636b6f;
+                padding: 0 25px;
+                font-size: 13px;
+                font-weight: 600;
+                letter-spacing: .1rem;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+
+            .m-b-md {
+                margin-bottom: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
                 </div>
-            </div>
-        <!-- ============================================== BEST SELLER ============================================== -->
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="sidebar-widget wow fadeInUp outer-bottom-vs">
-                    <h3 class="section-title">BEST SELLER</h3>
-                    <div class="sidebar-widget-body outer-top-xs">
-                        <div class="owl-carousel best-seller custom-carousel owl-theme outer-top-xs">
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s1.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s1.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Asus Zenphone 6</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s1.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s1.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Asus Zenphone 6</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Apple Iphone 5s</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Apple Iphone 5s</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s3.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s3.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Canon EOS 60D</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span>
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s3.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s3.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Canon EOS 60D</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price"> 
-                                                            <span class="price">
-                                                                $650.99             
-                                                            </span> 
-                                                        </div><!-- /.product-price -->
-                                                        <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                                <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                                <div class="zoom-overlay"></div>
-                                                            </a>                    
-                                                        </div><!-- /.image -->
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                            <div class="col col-xs-7">
-                                                <div class="product-info">
-                                                    <h3 class="name"><a href="#">Sony Ericson Vaga</a></h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="product-price"> 
-                                                        <span class="price">
-                                                            $650.99             
-                                                        </span>
-                                                    </div><!-- /.product-price -->
-                                                    <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                </div>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.product-micro-row -->
-                                    </div><!-- /.product-micro -->
-                                </div>
-                                <div class="product">
-                                    <div class="product-micro">
-                                        <div class="row product-micro-row">
-                                            <div class="col col-xs-5">
-                                                <div class="product-image">
-                                                    <div class="image">
-                                                        <a href="{{ url('User/images/products/s2.jpg')}}" data-lightbox="image-1" data-title="Nunc ullamcors">
-                                                            <img data-echo="{{ url('User/images/products/s2.jpg')}}" src="User/images/blank.gif" alt="">
-                                                            <div class="zoom-overlay"></div>
-                                                        </a>                    
-                                                    </div><!-- /.image -->
-                                                </div><!-- /.product-image -->
-                                            </div><!-- /.col -->
-                                            <div class="col col-xs-7">
-                                                <div class="product-info">
-                                                    <h3 class="name"><a href="#">Sony Ericson Vaga</a></h3>
-                                                    <div class="rating rateit-small"></div>
-                                                    <div class="product-price"> 
-                                                        <span class="price">
-                                                            $650.99             
-                                                        </span>
-                                                    </div><!-- /.product-price -->
-                                                    <div class="action"><a href="#" class="lnk btn btn-primary">Add To Cart</a></div>
-                                                </div>
-                                            </div><!-- /.col -->
-                                        </div><!-- /.product-micro-row -->
-                                    </div><!-- /.product-micro -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Laravel
+                </div>
+
+                <div class="links">
+                    <a href="https://laravel.com/docs">Docs</a>
+                    <a href="https://laracasts.com">Laracasts</a>
+                    <a href="https://laravel-news.com">News</a>
+                    <a href="https://blog.laravel.com">Blog</a>
+                    <a href="https://nova.laravel.com">Nova</a>
+                    <a href="https://forge.laravel.com">Forge</a>
+                    <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
             </div>
         </div>
-        <!-- ============================================== CONTENT : END ============================================== -->
-    </div><!-- /.row -->
-    <!-- ============================================== BRANDS CAROUSEL ============================================== -->
-<!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
-</div><!-- /.container -->
-</div>
-
-@endsection
+    </body>
+</html>

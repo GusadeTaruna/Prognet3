@@ -44,8 +44,8 @@ return [
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
+            'hash' => false,
         ],
-
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -54,6 +54,7 @@ return [
         'api-admin' => [
             'driver' => 'token',
             'provider' => 'admins',
+            'hash' => false,
         ],
     ],
 
@@ -114,7 +115,7 @@ return [
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
-            'expire' => 15,
+            'expire' => 60,
         ],
     ],
 

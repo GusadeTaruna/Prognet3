@@ -5,19 +5,20 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\AdminNotification;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable;
-    protected $table = 'users';
 
+    protected $table = 'users';
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','profile_image',
+        'name', 'email', 'password','status','profile_image',
     ];
 
     /**
@@ -38,8 +39,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function setPasswordAttribute($password)
-    {
-        $this->attributes['password'] = bcrypt($password);
+    public function notifications(){
+        return $this->morphMany(UserNotification::class, 'notifiable')->orderBy('created_at', 'desc');
     }
 }

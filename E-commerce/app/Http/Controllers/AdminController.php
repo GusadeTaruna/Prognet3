@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use App\Product;
-use App\Images;
-use App\Discount;
 use DB;
+use App\Admin;
+use App\Notifications\AdminNotification;
+use App\Quotation;
+use App\Transaction;
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 
 class AdminController extends Controller
 {
@@ -27,91 +28,32 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('Admin/dashboard');
+
+        $tahun = CARBON::NOW()->format('Y');
+        $reportBulanan = Transaction::
+        select(DB::raw('MONTHNAME(created_at) as bulan'), DB::raw('COALESCE(SUM(total),0) as pendapatan'))
+            ->groupBy(DB::raw('MONTH(created_at)'))
+            ->where(DB::raw('YEAR(created_at)'),'=', $tahun)
+            ->where('status','success')
+            ->get();
+        
+        $reportTahunan = Transaction::
+        select(DB::raw('YEAR(created_at) as tahun'), DB::raw('COALESCE(SUM(total),0) as pendapatan'))
+            ->groupBy(DB::raw('YEAR(created_at)'))
+            ->where('status','success')
+            ->get();
+        return view('admin',compact("reportBulanan","reportTahunan"));
     }
 
-    public function productList()
-    {
-        $products = DB::table('products')->get();
-        return view('Admin/productList',compact('products'));
-    }
-
-    public function inputProduct()
-    {
-        $list = DB::table('product_categories')->get();
-        return view('Admin/inputProduct',compact('list'));
-    }
-
-    public function listCourier()
-    {
-        $courier = DB::table('couriers')->get();
-        return view('Admin/courier',compact('courier'));
-    }
-
-    public function listCategories()
-    {
-        $category = DB::table('product_categories')->get();
-        return view('Admin/productCategory',compact('category'));
-    }
-
-    public function addCategory(Request $request)
-    {
-
-        $category_name = $request->category_name;
-
-        DB::table('product_categories')->insert(
-            [
-            'category_name' => $category_name,
-            ]
-        );
-
-        return redirect()->back()->with('success','Successfully input');
-    }
-
-    public function addCourier(Request $request)
-    {
-
-        $courier = $request->courier;
-
-        DB::table('couriers')->insert(
-            [
-            'courier' => $courier,
-            ]
-        );
-
-        return redirect()->back()->with('success','Successfully input');
-    }
-
-    public function store(Request $request){
-
-
-        if ($request->hasFile('images')) {
-            $allowedfileExtension=['jpeg','jpg','png','bmp'];
-            $files = $request->file('images');
-            foreach ($files as $file) {
-                $image_name = $file->getClientOriginalName();
-                $extension = $file->getClientOriginalExtension();
-                $check=in_array($extension,$allowedfileExtension);
-            }
-            if ($check) {
-                $product = Product::create($request->all());
-                foreach ($request->images as $image) {
-                    $image_name = $image->store('images');
-                    Images::create([
-                        'product_id'=>$product->id,
-                        'image_name'=>$image_name
-                    ]);
-                }
-                if ($request->get('mycheckbox')) {
-                    Discount::create([
-                        'id_product'=>$product->id,
-                        'percentage'=>$request->input('percentage'),
-                        'start'=>$request->input('start'),
-                        'end'=>$request->input('end')
-                    ]);
-                }
-            }
-        }
-        return redirect('list-product')->with('success','Successfully input');
-    }
+    public function chart()
+      {
+        $tahun = CARBON::NOW()->format('Y');
+        $result = \DB::table('transactions')
+                    ->select(DB::raw('MONTHNAME(created_at) as bulan'), DB::raw('COALESCE(SUM(total),0) as pendapatan'))
+                    ->groupBy(DB::raw('MONTH(created_at)'))
+                    ->where(DB::raw('YEAR(created_at)'),'=', $tahun)
+                    ->where('status','success')
+                    ->get();
+        return response()->json($result);
+      }
 }

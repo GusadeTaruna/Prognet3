@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -52,8 +51,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
-            'profile_image' => ['image', 'mimes:jpeg,png,jpg', 'max:2048'],
+            'status' => ['string'],
+            'profile_image' => ['string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -63,42 +63,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data, Request $request)
+    protected function create(array $data)
     {
-
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'status' => $data['status'],
+            'profile_image' => $data['profile_image'],
             'password' => Hash::make($data['password']),
         ]);
     }
-
-    public function simpan(Request $request){
-
-
-        $user = new User();
-
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
-
-
-        if ($request->hasFile('profile_image')) {
-            $profile_image = $request->file('profile_image');
-            $name = str_slug($request->title).'.'.$profile_image->getClientOriginalName();
-            $destinationPath = public_path('/uploads/User');
-            $imagePath = $destinationPath. "/".  $name;
-            $profile_image->move($destinationPath, $name);
-            $user->profile_image = $name;
-        }else{
-            $images = scandir(public_path('/uploads/User'));
-            $name = str_slug($request->title).'.'.'default.png';
-            $user->profile_image = $name;
-        }
-
-
-
-        $user->save();
-    }
-
 }

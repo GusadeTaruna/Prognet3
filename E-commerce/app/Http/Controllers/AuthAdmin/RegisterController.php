@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\AuthAdmin;
+namespace App\Http\Controllers\Auth;
 
-use App\Admin;
+use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -21,36 +19,16 @@ class RegisterController extends Controller
     | validation and creation. By default this controller uses a trait to
     | provide this functionality without requiring any additional code.
     |
+    */
 
+    use RegistersUsers;
 
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-
-    public function showRegistrationForm(){
-        return view('authAdmin.register');
-    }
-
-    public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($admin = $this->create($request->all())));
-
-        $this->guard()->login($admin);
-
-        return $this->registered($request, $admin)
-                        ?: redirect($this->redirectPath());
-    }
-
-    protected function guard()
-    {
-        return Auth::guard();
-    }
-
-    protected $redirectTo = 'admin.home';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -59,7 +37,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        $this->middleware('guest');
     }
 
     /**
@@ -71,9 +49,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'username' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
             'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'status' => ['string'],
+            'profile_image' => ['string'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -85,10 +65,11 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Admin::create([
-            'username' => $data['username'],
+        return User::create([
             'name' => $data['name'],
-            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'status' => $data['status'],
+            'profile_image' => $data['profile_image'],
             'password' => Hash::make($data['password']),
         ]);
     }

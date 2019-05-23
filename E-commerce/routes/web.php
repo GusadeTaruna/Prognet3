@@ -8,44 +8,79 @@
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
-|
+|s
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/list-products','IndexController@shop');
+Route::get('/cat/{id}','IndexController@listByCat')->name('cats');
+Route::get('/product-detail/{id}','IndexController@detailpro');
+
+Route::get('/markRead','TransactionController@markRead');
+
+
+Auth::routes(['verify' => true]);
+
+//mengubah route home dan home controller agar ke /
+Route::get('/', function(){
+    $user = user::find(1);
+    User::find(1)->notify(new UserNotification);
+    // 'IndexController@index');
 });
 
-Auth::routes();
+Route::get('/','IndexController@index');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/chart','AdminController@chart');
 
-Route::get('/user/logout', 'Auth\LoginController@logoutUser')->name('user.logout');
-
-Route::post('/signup', 'Auth\RegisterController@simpan')->name('signup');
-
-Route::get('/track-order', 'UserController@trackOrder');
-Route::get('/checkout', 'UserController@CheckoutPage');
-Route::get('/products', 'UserController@showProduct');
-Route::get('/product-detail', 'UserController@showDetailsProduct');
-Route::get('/cart', 'UserController@showCart');
-Route::get('/profile', 'UserController@showProfile');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-Route::get('/dashboard', 'AdminController@index')->name('admin.home');
-Route::get('/list-product', 'AdminController@productList');
-Route::get('/add-product', 'AdminController@inputProduct');
-Route::get('/category-product', 'AdminController@listCategories');
-Route::get('/courier', 'AdminController@listCourier');
-Route::post('/inputProduct', 'AdminController@store');
-Route::post('/inputCategories', 'AdminController@addCategory');
-Route::post('/inputCourier', 'AdminController@addCourier');
-
-
-Route::group(['prefix'=>'admin'], function(){
-	Route::get('/login', 'AuthAdmin\LoginController@showLoginForm')->name('admin.login');
-	Route::get('/login/coba', 'AuthAdmin\LoginController@showLoginForm2')->name('admin.login.coba');
-	Route::post('/login', 'AuthAdmin\LoginController@login')->name('admin.login.submit');
-	Route::get('/register', 'AuthAdmin\RegisterController@showRegistrationForm')->name('admin.register');
-	Route::post('/register', 'AuthAdmin\RegisterController@register')->name('admin.register.submit');
-	Route::get('/logout', 'AuthAdmin\LoginController@logout')->name('admin.logout');
+Route::group(['prefix'=>'admin', 'guard'=>'admin'],function(){
+    Route::get('/login','AuthAdmin\LoginController@showLoginForm')->name('admin.login');
+    Route::post('/login','AuthAdmin\LoginController@login')->name('admin.login.submit');
+    Route::get('/','AdminController@index')->name('admin.home');
+    Route::resource('/product_cat','ProductCatController');
+    Route::resource('/product','ProductController');
+    Route::resource('/courier','CourierController');
+    Route::resource('/product_img','ProductImgController');
+    Route::get('product_img/{product_img}','ProductImgController@destroy');
+    Route::get('admin/logout','AuthAdmin\LoginController@logout')->name('admin.logout');
+    Route::resource('/transactionAdmin','transactionAdminController');
+    Route::resource('/response','ResponseController');
+    
 });
+
+Route::group(['guard'=>'web'],function (){
+    Route::resource('/review','ReviewController');
+    Route::resource('/transaction','TransactionController');
+    Route::post('/transactionStatus/{transaction}','TransactionController@updateStatus');
+    Route::post('/addToCart','CartController@addToCart')->name('addToCart');
+    Route::get('/viewcart','CartController@index');
+    Route::get('/cart/deleteItem/{id}','CartController@deleteItem');
+    Route::post('/cart/update/{cart}','CartController@update')->name('cart.update');
+    Route::get('/check-out','CheckOutController@index');
+    Route::get('/check-shipping','CheckOutController@checkshipping');
+    Route::post('/submit-checkout','CheckOutController@submitcheckout');
+    Route::get('/order-review','OrderController@index');
+    Route::get('/user/logout','Auth\LoginController@logout')->name('user.logout');
+    Route::post('/cod','OrderController@cod');
+    
+});
+
+
+
+// Route::get('/myaccount','UsersController@account');
+// Route::put('/update-profile/{id}','UsersController@updateprofile');
+// Route::put('/update-password/{id}','UsersController@updatepassword');
+
+
+// Route::post('/submit-checkout','CheckOutController@submitcheckout');
+
+// Route::get('/order-review','OrdersController@index');
+// Route::post('/submit-order','OrdersController@order');
+// Route::get('/cod','OrdersController@cod');
+// Route::get('/paypal','OrdersController@paypal');
+
+
+
+
