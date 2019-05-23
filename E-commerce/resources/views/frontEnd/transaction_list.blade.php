@@ -5,7 +5,9 @@
 @section('content')
     
     <section id="cart_items">
+
         <div class="container">
+            <h1 style="text-align: center;color: #000000;font-size: 30px;">TRANSACTION HISTORY</h1>
             <div class="table-responsive cart_info">
                 <table class="table table-condensed">
                     <thead>
@@ -47,7 +49,9 @@ s
 
                                 <td>
                                     @if($transaction->status == 'expired')
-                                        Your Transaction Expired
+                                        Your Transaction Already Expired
+                                    @elseif ($transaction->status == 'cancel')
+                                        <button disabled class="bg-green-500 text-white py-2 px-4 rounded">Payment & Detail</button>
                                     @else
                                         <a href="/transaction/{{$transaction->id}}"><button class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Payment & Detail</button></a>
                                     @endif
@@ -62,11 +66,15 @@ s
                                 </td>
 
                                 <td>
+                                    @if($transaction->status== 'unverified' || $transaction->status==NULL)
                                     <form action="/transaction/{{$transaction->id}}" method="post">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
                                                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white py-2 px-2 rounded">Cancel Transaction</button>
                                     </form>
+                                    @else
+                                    Nothing to do
+                                    @endif
                                 </td>
                                 
                                 

@@ -42,7 +42,6 @@
                                 <li><a href="#">UK</a></li>
                             </ul>
                         </div>
-
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                 DOLLAR
@@ -65,16 +64,15 @@
                                 $id = Auth::id();
                                 $jum = auth()->user()->unreadNotifications->count();
                                 $notif = DB::table('admin_notifications')->where('notifiable_id',$id)->get();
-
                             @endphp
                             <li class="dropdown">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-bell"></i> Notification
                                 @if($jum != 0)<span class="badge" style="background-color: red;">1</span>@endif <span class="caret"></span></a>
 
                                 <ul class="dropdown-menu">
-                                    <li ><a style="color: green;" href="/markRead">Mark All As Read</a></li><br>
+                                    @if($jum == 0)<li ><button id="readnotif" ><a style="color: green;" >No Notification</a></button></li>@else<li ><button id="readnotif" ><a style="color: green;" >Mark as read</a></button></li>@endif<br>
                                     @foreach(auth()->user()->unreadNotifications as $notif)
-                                        <li><a href="#">{{$notif->data}}</a></li><br>
+                                        <li><a href="#">{!!$notif->data!!}</a></li><br>
                                     @endforeach
 
                                   
@@ -137,3 +135,35 @@
         </div>
     </div><!--/header-bottom-->
 </header><!--/header-->
+<script src="{{asset('frontEnd/js/jquery.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('#readnotif').click(function(){
+            console.log("terklik");
+            var baseUrl = window.location.protocol+"//"+window.location.host;
+            $.ajax({
+                  url: baseUrl+'/markRead',  
+                  type : 'post',
+                  dataType: 'JSON',
+                  data: {
+                    "_token": "{{ csrf_token() }}",
+                    
+                    },
+                  success:function(response){
+                        location.reload();
+                  },
+                  error:function(){
+                    alert("GAGAL");
+                  }
+              });
+        });
+    });
+</script>

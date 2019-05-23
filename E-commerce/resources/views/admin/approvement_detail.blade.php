@@ -83,20 +83,17 @@
                                 <td class="cart_price">
                                     <p style="font-size: 15px">Rp {{number_format($image_data->price)}}</p>
                                 </td>
-
                                 <td class="cart_quantity">
                                     {{$data->qty}}
                                 </td>
                                 <td>
                                     {{$data->discount}}%
                                 </td>
-
                                 <td class="cart_total">
                                     <p style="font-size: 15px">Rp {{number_format($data->qty*$data->selling_price)}}</p>
                                 </td>
                                 
                             </tr>
-
                             
                              
                         @endforeach
@@ -105,18 +102,15 @@
             </div>
         </div>
     </div>
-
-
     
     
      
-
         
         
     
 @endsection
 @section('jsblock')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/jquery.ui.custom.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
     <script src="{{asset('js/jquery.uniform.js')}}"></script>
@@ -149,4 +143,3 @@
         });
     </script>
 @endsection
-

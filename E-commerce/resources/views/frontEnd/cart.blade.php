@@ -65,8 +65,9 @@
                                 <td class="cart_total">
                                     <p id="ptotal-{{$cart_data->id}}" style="font-size: 15px">Rp {{number_format($cart_data->price * $cart_data->qty)}}</p>
                                 </td>
+
                                 <td class="cart_delete">
-                                    <a class="cart_quantity_delete" href="javascript:" rel="{{$cart_data->id}}"  id="hapus-{{$cart_data->id}}"><i class="fa fa-times"></i></a>
+                                    <a class="cart_quantity_delete"  href="javascript:" rel="{{$cart_data->id}}"  id="hapus-{{$cart_data->id}}"><i class="fa fa-times"></i></a>
                                 </td>
                             </tr>
 
@@ -80,25 +81,20 @@
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         }
                                     });
-
                                     $('#klik-{{$cart_data->id}}').click(function(){
                                         console.log("terklik");
                                         var baseUrl = window.location.protocol+"//"+window.location.host;
                                         var qty_awal = $('.cart_quantity_input-{{$cart_data->id}}').val();
                                         var stock = parseInt($('#stock-{{$cart_data->id}}').val());
                                         
-
                                         
-
                                         var qty_akhir = parseInt(qty_awal) + 1;
-
                                         var id = parseInt($('#id-{{$cart_data->id}}').val());
                                         var harga = parseInt($('#price-{{$cart_data->id}}').val());
                                         var ctot = parseInt($('#ctot').val());
                                         var ss = ctot+harga;
                                         console.log(ss);
                                         var total = harga * qty_akhir;
-
                                         console.log(total);
                                         if (qty_akhir > stock) {
                                             alert("Stock tidak mencukupi!");
@@ -125,18 +121,14 @@
                                               error:function(){
                                                 alert(qty_akhir);
                                               }
-
                                           });
                                     });
-
                                     $('#klik1-{{$cart_data->id}}').click(function(){
                                         console.log("terklik");
                                         var baseUrl = window.location.protocol+"//"+window.location.host;
                                         var qty_awal = $('.cart_quantity_input-{{$cart_data->id}}').val();
                                         var stock = parseInt($('#stock-{{$cart_data->id}}').val());
                                         var qty_akhir = parseInt(qty_awal) - 1;
-
-
                                         if (qty_akhir == 0 ) {
                                             alert('Quantity tidak boleh 0 !');
                                             return false;
@@ -147,7 +139,6 @@
                                         var ctot = parseInt($('#ctot').val());
                                         var ss = ctot-harga;
                                         
-
                                         // axios.patch()
                                         $.ajax({
                                               url: baseUrl+'/cart/update/'+id,  
@@ -168,10 +159,8 @@
                                               error:function(){
                                                 alert(qty_akhir);
                                               }
-
                                           });
                                     });
-
                                 });
                             </script>
                              
@@ -193,7 +182,7 @@
             <div class="row">
                 <div class="col-sm-6">
                 {{--     @if(Session::has('message_coupon'))
-                        <div class="alert alert-success text-center" role="alert">
+                        <div class="alert alert-danger text-center" role="alert">
                             {{Session::get('message_coupon')}}
                         </div>
                     @endif
@@ -205,7 +194,7 @@
                                 <label for="coupon_code">Coupon Code</label>
                                 <div class="controls {{$errors->has('coupon_code')?'has-error':''}}">
                                     <input type="text" class="form-control" name="coupon_code" id="coupon_code" placeholder="Promotion By Coupon">
-                                    <span class="text-success">{{$errors->first('coupon_code')}}</span>
+                                    <span class="text-danger">{{$errors->first('coupon_code')}}</span>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Apply</button>
                             </div>
@@ -251,7 +240,7 @@
                 confirmButtonText:'Yes, delete it!',
                 cancelButtonText:'No, cancel!',
                 confirmButtonClass:'btn btn-success',
-                cancelButtonClass:'btn btn-success',
+                cancelButtonClass:'btn btn-danger',
                 buttonsStyling:false,
                 reverseButtons:true
             },function () {

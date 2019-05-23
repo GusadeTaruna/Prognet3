@@ -1,9 +1,9 @@
 body {
-	background:#06a10b;
+	background:#49ab81;
 }
 
 #header {
-	background-color: #06a10b;
+	background-color: #49ab81;
    margin-top:10px;
 }
 #search input[type=text], #search button {
@@ -12,9 +12,9 @@ body {
 #search input[type=text]:focus {
 	color: #777777;
 }
-#sidebar > ul{border-bottom: 1px solid #06a10b}
+#sidebar > ul{border-bottom: 1px solid #49ab81}
 #sidebar > ul > li {
-	border-top: 1px solid #06a10b; border-bottom: 1px solid #1f262d;
+	border-top: 1px solid #49ab81; border-bottom: 1px solid #1f262d;
 }
 #sidebar > ul > li.active {
     background-color: #27a9e3; border-bottom: 1px solid #27a9e3;  border-top: 1px solid #27a9e3;
@@ -33,7 +33,7 @@ body {
 #sidebar > ul li ul li a{ color:#939da8}
 #sidebar > ul li ul li a:hover, #sidebar > ul li ul li.active a {
 	color: #fff;
-	background-color: #06a10b;
+	background-color: #49ab81;
 }
 
 
@@ -41,7 +41,7 @@ body {
 	background-color: #47515b; color: #fff; 
 }
 #search input[type=text]:focus {
-	color: #06a10b; color: #fff; box-shadow:none;
+	color: #49ab81; color: #fff; box-shadow:none;
 }
 .dropdown-menu li a:hover, .dropdown-menu .active a, .dropdown-menu .active a:hover {
     color: #eeeeee;
