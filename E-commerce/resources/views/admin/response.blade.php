@@ -32,7 +32,7 @@
                     @foreach($response as $response)
                         <tr class="gradeC">
                             <td>{{$loop->iteration}}</td>
-                            <td style="vertical-align: middle;">{{$response->product_name}}</td>
+                            <td style="vertical-align: middle;">{{$response->product_id}}</td>
                             <td style="vertical-align: middle;">{{$response->user_id}}</td>
                             <td style="vertical-align: middle;text-align: center;">{{$response->rate}}</td>
                             

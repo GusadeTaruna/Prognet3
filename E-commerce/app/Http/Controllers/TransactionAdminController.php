@@ -31,7 +31,6 @@ class TransactionAdminController extends Controller
 
     public function markReadAdmin(){
         $admin = Admin::find(1);
-        
         $admin->unreadNotifications()->update(['read_at' => now()]);
         return response()->json($admin);
     }

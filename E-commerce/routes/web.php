@@ -21,6 +21,7 @@ Auth::routes(['verify' => true]);
 Route::get('/','IndexController@index');
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/chart','AdminController@chart');
+
 Route::group(['prefix'=>'admin', 'guard'=>'admin'],function(){
     Route::get('/login','AuthAdmin\LoginController@showLoginForm')->name('admin.login');
     Route::post('/login','AuthAdmin\LoginController@login')->name('admin.login.submit');

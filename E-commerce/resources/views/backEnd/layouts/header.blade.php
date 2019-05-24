@@ -4,10 +4,7 @@
 </div>
 <!--close-Header-part-->
 <!--top-Header-menu-->
-@php
-    $jum = DB::table('admin_notifications')->where('read_at',NULL)->count();
-    $notif = DB::table('admin_notifications')->where('read_at',NULL)->get();
-@endphp
+
 
 
 </style>
@@ -29,7 +26,10 @@
 
         </li>
         
-
+        @php
+            $jum = DB::table('admin_notifications')->where('read_at',NULL)->count();
+            $notif = DB::table('admin_notifications')->where('read_at',NULL)->get();
+        @endphp
         <li class="dropdown"  style="float: right;">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon icon-bell"></i> Notification
             @if($jum != 0)<span class="badge" style="background-color: red;">1</span>@endif <span class="caret"></span></a>
@@ -83,12 +83,3 @@
         });
     });
 </script>
-
-<!--close-top-Header-menu-->
-<!--start-top-serch-->
-
-{{-- <div id="search">
-    <input type="text" placeholder="Search here..."/>
-    <button type="submit" class="tip-bottom" title="Search"><i class="icon-search icon-white"></i></button>
-</div> --}}
-<!--close-top-serch-->

@@ -50,10 +50,14 @@ s
                                 <td>
                                     @if($transaction->status == 'expired')
                                         Your Transaction Already Expired
-                                    @elseif ($transaction->status == 'cancel')
-                                        <button disabled class="bg-green-500 text-white py-2 px-4 rounded">Payment & Detail</button>
-                                    @else
+                                    @elseif ($transaction->status == NULL)
                                         <a href="/transaction/{{$transaction->id}}"><button class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Payment & Detail</button></a>
+                                    @elseif ($transaction->status == 'delivered')
+                                        <a href="/transaction/{{$transaction->id}}"><button class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Confirm Product Arrive</button></a>
+                                    @elseif ($transaction->status == 'success')
+                                        <a href="/transaction/{{$transaction->id}}"><button class="bg-green-500 hover:bg-green-700 text-white py-2 px-4 rounded">Give a Review</button></a>
+                                    @else
+                                       <button disabled class="bg-green-500 text-white py-2 px-4 rounded">Payment Already Submited</button>
                                     @endif
                                 </td>
 
